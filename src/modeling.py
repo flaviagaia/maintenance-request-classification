@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 
 os.environ.setdefault("MPLCONFIGDIR", str(Path("/tmp/matplotlib-maintenance-request")))
+Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
 import joblib
 import matplotlib

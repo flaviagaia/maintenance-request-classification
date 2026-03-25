@@ -56,6 +56,25 @@ Essas colunas são concatenadas em um campo textual único para representar o ch
 - avaliação com `accuracy`, `macro F1` e `weighted F1`
 - matriz de confusão para leitura dos erros por classe
 
+### Resultados atuais
+
+- `11.999` solicitações processadas
+- `6` grupos de manutenção
+- melhor modelo: `Logistic Regression`
+- `Accuracy = 0.9996`
+- `Macro F1 = 0.9993`
+- `Weighted F1 = 0.9996`
+
+### Leitura honesta dos resultados
+
+As métricas ficaram muito altas porque o dataset público do NYC 311 traz campos muito informativos para roteamento, especialmente `descriptor`, `agency` e `location_type`. Isso faz deste projeto um ótimo exemplo de **triagem operacional supervisionada**, mas não um benchmark universal de manutenção industrial.
+
+Em outras palavras:
+
+- o projeto é excelente para mostrar classificação de chamados com texto + contexto;
+- a métrica não deve ser lida como garantia de generalização para qualquer domínio;
+- uma evolução futura interessante seria testar versões mais difíceis, removendo parte dos campos mais explícitos.
+
 ### Modelos comparados
 
 - `Logistic Regression`
@@ -157,6 +176,25 @@ These columns are concatenated into a compact textual representation of the requ
 - model benchmarking
 - evaluation with `accuracy`, `macro F1`, and `weighted F1`
 - confusion matrix for error analysis
+
+### Current results
+
+- `11,999` processed requests
+- `6` maintenance groups
+- best model: `Logistic Regression`
+- `Accuracy = 0.9996`
+- `Macro F1 = 0.9993`
+- `Weighted F1 = 0.9996`
+
+### Honest interpretation of the results
+
+The metrics are very high because the public NYC 311 dataset contains highly informative routing signals, especially `descriptor`, `agency`, and `location_type`. This makes the project a strong example of **operational request triage**, but not a universal benchmark for industrial maintenance.
+
+In practice:
+
+- this is a very good demo of text + context classification for maintenance routing;
+- the score should not be interpreted as universal performance;
+- a useful next step would be to test harder variants with fewer explicit fields.
 
 ### Models compared
 

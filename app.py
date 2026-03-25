@@ -49,7 +49,19 @@ st.markdown(
 if st.button("Atualizar pipeline e reprocessar"):
     run_pipeline(refresh_download=False)
 
-if not PROCESSED_DATA_PATH.exists() or not METRICS_PATH.exists() or not MODEL_PATH.exists():
+def _artifacts_ready() -> bool:
+    if not all(path.exists() for path in [PROCESSED_DATA_PATH, METRICS_PATH, MODEL_PATH, SUMMARY_PATH]):
+        return False
+    try:
+        pd.read_csv(PROCESSED_DATA_PATH, nrows=5)
+        pd.read_csv(METRICS_PATH, nrows=5)
+        json.loads(SUMMARY_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return False
+    return True
+
+
+if not _artifacts_ready():
     run_pipeline(refresh_download=False)
 
 dataset = pd.read_csv(PROCESSED_DATA_PATH)
@@ -81,6 +93,7 @@ with tab_predict:
 
 with tab_metrics:
     st.subheader("Comparação de modelos")
+    st.caption("Este benchmark usa campos bastante informativos do NYC 311, então o desempenho alto deve ser interpretado como um cenário de roteamento com forte sinal operacional, não como benchmark universal.")
     st.dataframe(metrics, use_container_width=True, hide_index=True)
     st.plotly_chart(
         px.bar(metrics, x="model", y="macro_f1", color="model", title="Macro F1 por modelo"),
