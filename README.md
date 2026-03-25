@@ -103,6 +103,8 @@ O `Streamlit` foi desenhado para funcionar como uma bancada de validação:
 - comparar métricas dos modelos
 - inspecionar a distribuição da base processada
 
+![Painel Streamlit](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/maintenance-request-classification/assets/streamlit_dashboard.jpg)
+
 ### Estrutura
 
 - [main.py](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/maintenance-request-classification/main.py)
@@ -210,3 +212,7 @@ In practice:
 - `matplotlib`
 - `streamlit`
 - `plotly`
+
+### Interface
+
+![Streamlit dashboard](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/maintenance-request-classification/assets/streamlit_dashboard.jpg)
